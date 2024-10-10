@@ -12,12 +12,13 @@
 <div th:insert="~{fragments/header :: header}"></div>
 
 <div class="container">
-    <h1 class="display-6">
-        Welcome to Cafe
-    </h1>
-    <p>
-        <span th:text="${greeting}"></span>
-    </p>
+    <h1 class="display-6">Welcome to Cafe</h1>
+    <p><span th:text="${greeting}"></span></p>
+
+    <div id="success-msg" class="alert alert-success"
+         th:if="${confirmOrder}">
+        Your order has been successfully submitted !
+    </div>
 
     <div sec:authorize="isAuthenticated()">
         <p>Khun <b><span sec:authentication="name"></span></b></p>

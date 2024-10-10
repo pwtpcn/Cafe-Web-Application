@@ -47,4 +47,13 @@ public class OrderService {
         item.setQuantity(request.getQuantity());
         itemRepository.save(item);
     }
+
+    public void submitOrder() {
+        PurchaseOrder currentOrder =
+                orderRepository.findByStatus(Status.ORDER);
+        currentOrder.setTimestamp(LocalDateTime.now());
+        currentOrder.setStatus(Status.CONFIRM);
+        orderRepository.save(currentOrder);
+    }
+
 }
